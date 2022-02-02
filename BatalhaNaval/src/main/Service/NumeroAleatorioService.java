@@ -8,7 +8,7 @@ public class NumeroAleatorioService {
 
 		Random gerarNumero = new Random();
 
-		return Integer.toString(gerarNumero.nextInt(quantidadeMaxima));
+		return Integer.toString(gerarNumero.nextInt(Math.abs(quantidadeMaxima)));
 	}
 
 }

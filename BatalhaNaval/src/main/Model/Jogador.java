@@ -2,6 +2,8 @@ package Model;
 
 import java.util.ArrayList;
 
+import Controller.NavioController;
+
 public class Jogador {
 
 	private static int quantidadeNavios;
@@ -18,8 +20,8 @@ public class Jogador {
 
 	public void posicionarNavios() {
 		for (int i = 0; i < quantidadeNavios; i++) {
-			Navio navio = new Navio();
-			this.navios.add(navio.gerarCoordenadasNavio());
+			
+			this.navios.add(NavioController.criarNavio(this.navios));
 		}
 	}
 	

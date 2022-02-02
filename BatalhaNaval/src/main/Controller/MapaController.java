@@ -1,15 +1,13 @@
 package Controller;
 
-import java.awt.Component;
 import java.util.InputMismatchException;
-import java.util.Objects;
 import java.util.Scanner;
 
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
 
-import Model.Computador;
+import Model.Jogador;
 import Model.Mapa;
 import Validation.MapaValidation;
 
@@ -51,14 +49,14 @@ public class MapaController {
 
 	}
 
-	public static void mostrarMapaDeAtaque(Mapa mapaAdversario, JTextField coordenadaX, JTextField coordenadaY) {
+	public static void mostrarMapaDeAtaque(Mapa mapaAdversario,Object alvo, JTextField coordenadaX, JTextField coordenadaY) {
 		
 		UIManager.put("OptionPane.yesButtonText", "ATIRAR");
 		UIManager.put("OptionPane.noButtonText", "SAIR");
 		
 		Object[] coordenadas = { mapaAdversario.mostrarMapa() + "\n" + "Coordenada X:", coordenadaX, "Coordenada Y:", coordenadaY};
 		
-		int opcao = JOptionPane.showConfirmDialog(null, coordenadas, "BATALHA NAVAL", JOptionPane.OK_OPTION, JOptionPane.OK_OPTION);
+		JOptionPane.showConfirmDialog(null, coordenadas,"Mapa - " + ((Jogador) alvo).getNome().toUpperCase() , JOptionPane.OK_OPTION, JOptionPane.OK_OPTION);
 	}
 
 }
