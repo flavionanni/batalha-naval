@@ -2,14 +2,14 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 import Controller.MapaController;
-import Model.Jogador;
-import View.Menu;
+import Model.Usuario;
+import View.MenuView;
 
 public class Main {
 
 	public static void main(String[] args) {
 		
-		Menu.menuPrincipal();
+		MenuView.menuPrincipal();
 		
 		Scanner input = new Scanner(System.in);
 
@@ -18,7 +18,7 @@ public class Main {
 		System.out.print("Digite a quantidade de navios: ");
 		int quantidadeDeNavios = input.nextInt();
 
-		Jogador jogador = new Jogador("Flavio", quantidadeDeNavios);
+		Usuario jogador = new Usuario("Flavio", quantidadeDeNavios);
 
 		jogador.posicionarNavios();
 

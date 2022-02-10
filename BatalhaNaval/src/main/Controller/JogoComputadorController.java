@@ -3,38 +3,49 @@ package Controller;
 import java.util.Arrays;
 
 import Model.Computador;
-import Model.Jogador;
 import Model.Mapa;
+import Model.Usuario;
 import View.DificuldadeDoJogo;
+import View.UsuarioView;
+import Model.Jogador;
 
 public class JogoComputadorController {
 
-	private static Jogador jogador;
-	private static Computador computador;
+	private static Jogador usuario;
+	private static Jogador computador;
 	private static Mapa mapaJogador;
 	private static Mapa mapaComputador;
+	private static int quantidadeDeNavios;
 
 	public static void inicializarJogo() {
 
-		int quantidadeDeNavios = DificuldadeDoJogo.escolherDificuldadeDoJogo();
-		jogador = new Jogador(View.Jogador.gerarJogador(), quantidadeDeNavios);
-		computador = new Computador(new Jogador("Computador", quantidadeDeNavios));
+		quantidadeDeNavios = DificuldadeDoJogo.escolherDificuldadeDoJogo();
+		usuario = new Usuario(UsuarioView.gerarJogador(), quantidadeDeNavios);
+		computador = new Computador("Computador", quantidadeDeNavios);
 		mapaJogador = MapaController.criarMapaComputador();
 		mapaComputador = MapaController.criarMapaComputador();
-		jogador.posicionarNavios();
-		computador.getComputador().posicionarNavios();
+
+		usuario.posicionarNavios();
+		computador.posicionarNavios();
 		turnos();
 
 	}
 
 	public static void turnos() {
 
-		for (int i = 0; i < computador.getComputador().getNavios().size(); i++) {
-			System.out.println(Arrays.deepToString(computador.getComputador().getNavios().get(i)));
+		for (int i = 0; i < computador.getNavios().size(); i++) {
+			System.out.println(Arrays.deepToString(computador.getNavios().get(i)));
 		}
 
-		JogadorController.atirar(mapaComputador, computador.getComputador());
+		do {
 
+			JogadorController.atirar(mapaComputador, computador, usuario);
+			if (usuario.getQuantidadeDeAcertos() < quantidadeDeNavios) {
+				ComputadorController.atirar(mapaJogador, usuario, computador);
+			}
+
+		} while (usuario.getQuantidadeDeAcertos() < quantidadeDeNavios
+				&& computador.getQuantidadeDeAcertos() < quantidadeDeNavios);
 	}
 
 }

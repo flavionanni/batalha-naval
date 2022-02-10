@@ -2,7 +2,7 @@ package View;
 
 import javax.swing.JOptionPane;
 
-public class Jogador {
+public class UsuarioView {
 
 	public static String gerarJogador() {
 		

@@ -33,8 +33,8 @@ public class Mapa {
 		return imprimeMapa;
 	}
 
-	public void atualizarMapa(int coordenadaX, int coordenadaY, StatusMapa status) {
-				this.coordenadasMapa[coordenadaX][coordenadaY] = status.getStatusMapa();
+	public void atualizarMapa(int coordenadaX, int coordenadaY, String status) {
+				this.coordenadasMapa[coordenadaX][coordenadaY] = status;
 	}
 
 	public static int getQuantidadeLinhas() {

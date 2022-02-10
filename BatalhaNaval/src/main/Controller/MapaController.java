@@ -13,11 +13,13 @@ import Validation.MapaValidation;
 
 public class MapaController {
 
+	private static Scanner input;
+
 	public static void criarMapaMultiplayer(int quantidadeLinhas, int quantidadeColunas) {
 
 		boolean validacaoTamanhoDoMapa = false;
 
-		Scanner input = new Scanner(System.in);
+		input = new Scanner(System.in);
 
 		do {
 
@@ -44,19 +46,19 @@ public class MapaController {
 	}
 
 	public static Mapa criarMapaComputador() {
-
 		return new Mapa(5, 5);
 
 	}
 
-	public static void mostrarMapaDeAtaque(Mapa mapaAdversario,Object alvo, JTextField coordenadaX, JTextField coordenadaY) {
+	public static void mostrarMapaDeAtaque(Mapa mapaAdversario,Jogador nomeDoAlvo, JTextField coordenadaX, JTextField coordenadaY) {
 		
 		UIManager.put("OptionPane.yesButtonText", "ATIRAR");
 		UIManager.put("OptionPane.noButtonText", "SAIR");
 		
 		Object[] coordenadas = { mapaAdversario.mostrarMapa() + "\n" + "Coordenada X:", coordenadaX, "Coordenada Y:", coordenadaY};
 		
-		JOptionPane.showConfirmDialog(null, coordenadas,"Mapa - " + ((Jogador) alvo).getNome().toUpperCase() , JOptionPane.OK_OPTION, JOptionPane.OK_OPTION);
+		JOptionPane.showConfirmDialog(null, coordenadas,"Mapa - " +  nomeDoAlvo.getNome().toUpperCase() , JOptionPane.OK_OPTION, JOptionPane.OK_OPTION);
+		
 	}
 
 }

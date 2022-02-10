@@ -4,13 +4,12 @@ import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 
-import Model.Jogador;
 import Model.Mapa;
 import Model.StatusMapa;
 
 public class CoordenadasValidation {
 
-	public static boolean validarTiro(Mapa mapaAlvo, Object alvo, int coordenadaX, int coordenadaY) {
+	public static boolean validarTiro(Mapa mapaAlvo, int coordenadaX, int coordenadaY) {
 
 		if (coordenadaX < Mapa.getQuantidadeLinhas() && coordenadaY < Mapa.getQuantidadeColunas()) {
 			if (mapaAlvo.getCoordenadasMapa()[coordenadaX][coordenadaY] == StatusMapa.MAR.getStatusMapa()) {
